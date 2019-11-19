@@ -108,10 +108,10 @@ echo "...Root partition done"
 
 
 # replace PARTUUID
-opartuuidb=`blkid -o export /dev/mmcblk0p1 | grep PARTUUID`
-opartuuidr=`blkid -o export /dev/mmcblk0p2 | grep PARTUUID`
-npartuuidb=`blkid -o export ${device}p1 | grep PARTUUID`
-npartuuidr=`blkid -o export ${device}p2 | grep PARTUUID`
+opartuuidb=`sudo blkid -o export /dev/mmcblk0p1 | grep PARTUUID`
+opartuuidr=`sudo blkid -o export /dev/mmcblk0p2 | grep PARTUUID`
+npartuuidb=`sudo blkid -o export ${device}p1 | grep PARTUUID`
+npartuuidr=`sudo blkid -o export ${device}p2 | grep PARTUUID`
 sudo sed -i "s/$opartuuidr/$npartuuidr/g" $mountb/cmdline.txt
 sudo sed -i "s/$opartuuidb/$npartuuidb/g" $mountr/etc/fstab
 sudo sed -i "s/$opartuuidr/$npartuuidr/g" $mountr/etc/fstab
